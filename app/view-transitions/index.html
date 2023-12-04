@@ -57,7 +57,7 @@
 		</section>
 		<section class="slide slide--media js-slide"
 			data-transition-in="slide-from-left"
-			data-transition-out-parts
+			data-transition-out="slide-to-right"
 		>
 			<h2 class="title">View transitions</h2>
 
@@ -73,7 +73,7 @@
 }</code>
 		</section>
 		<section class="slide slide--media js-slide"
-			data-transition-in-parts
+			data-transition-in="slide-from-left"
 		>
 			<h2 class="title">View transitions</h2>
 
@@ -125,7 +125,7 @@
 		>
 			<h2 class="title">View transitions</h2>
 
-			<code class="media"><span style="display: inline-block; view-transition-name: example-item-code-1;">&lt;li style="view-transition-name: example-item-1;">Item 1&lt;/li></span>
+			<code class="media code--small"><span style="display: inline-block; view-transition-name: example-item-code-1;">&lt;li style="view-transition-name: example-item-1;">Item 1&lt;/li></span>
 <span style="display: inline-block; view-transition-name: example-item-code-2;">&lt;li style="view-transition-name: example-item-2;">Item 2&lt;/li></span>
 <span style="display: inline-block; view-transition-name: example-item-code-3;">&lt;li style="view-transition-name: example-item-3;">Item 3&lt;/li></span>
 <span style="display: inline-block; view-transition-name: example-item-code-4;">&lt;li style="view-transition-name: example-item-4;">Item 4&lt;/li></span>
@@ -144,7 +144,7 @@
 		<section class="slide slide--media-double js-slide">
 			<h2 class="title">View transitions</h2>
 
-			<code class="media"><span style="display: inline-block; view-transition-name: example-item-code-6;">&lt;li style="view-transition-name: example-item-6;">Item 6&lt;/li></span>
+			<code class="media code--small"><span style="display: inline-block; view-transition-name: example-item-code-6;">&lt;li style="view-transition-name: example-item-6;">Item 6&lt;/li></span>
 <span style="display: inline-block; view-transition-name: example-item-code-4;">&lt;li style="view-transition-name: example-item-4;">Item 4&lt;/li></span>
 <span style="display: inline-block; view-transition-name: example-item-code-5;">&lt;li style="view-transition-name: example-item-5;">Item 5&lt;/li></span>
 <span style="display: inline-block; view-transition-name: example-item-code-2;">&lt;li style="view-transition-name: example-item-2;">Item 2&lt;/li></span>
@@ -174,7 +174,12 @@
 					TypeScript doesn't ship with type definitions for this API yet<br>
 					<em>But</em> it's simple to write the necessary type definitions from the documentation
 				</p>
+			</div>
+		</section>
+		<section class="slide slide--text js-slide">
+			<h2 class="title">Caveats</h2>
 
+			<div class="text">
 				<p>
 					They are harder to use within a framework (like React) that controls DOM updates<br>
 					<em>But</em> it doesn't take too much work to write a custom hook to make them easy to use
