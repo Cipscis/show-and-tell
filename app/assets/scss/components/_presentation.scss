@@ -1,13 +1,5 @@
 @use "../theme/typography";
 
-:root {
-	--transition-duration: 0.3s;
-}
-
-::view-transition-group(*) {
-	animation-duration: var(--transition-duration);
-}
-
 .presentation {
 	display: grid;
 	justify-content: center;
@@ -50,7 +42,8 @@
 ::view-transition-group(progress) { animation-duration: 0s; }
 
 .presentation:not(.hydrated) {
-	overflow: auto;
+	width: 100%;
+	overflow-x: hidden;
 	scroll-snap-type: y mandatory;
 	> .slide {
 		scroll-snap-align: start;
@@ -182,43 +175,4 @@
 			view-transition-name: slide-media;
 		}
 	}
-}
-
-// Transitioning rules
-@keyframes slide-to-right {
-	to {
-		transform: translateX(100%);
-		opacity: 0;
-	}
-}
-
-@keyframes slide-from-left {
-	from {
-		transform: translateX(-100%);
-		opacity: 0;
-	}
-}
-
-:root:has(:where(.transitioning-in[data-transition-in-speed="slow"], .transitioning-out[data-transition-out-speed="slow"])) {
-	--transition-duration: 5s;
-}
-
-:root:has(:where(.transitioning-in[data-transition-in-speed="snap"], .transitioning-out[data-transition-out-speed="snap"])) {
-	--transition-duration: 0s;
-}
-
-:has(.transitioning-out[data-transition-out="slide-to-right"])::view-transition-old(slide) {
-	animation: slide-to-right var(--transition-duration) ease-in-out;
-}
-
-:has(.transitioning-out .text[data-transition-out="slide-to-right"])::view-transition-old(slide-text) {
-	animation: slide-to-right var(--transition-duration) ease-in-out;
-}
-
-:has(.transitioning-in[data-transition-in="slide-from-left"])::view-transition-new(slide) {
-	animation: slide-from-left var(--transition-duration) ease-in-out;
-}
-
-:has(.transitioning-in .text[data-transition-in="slide-from-left"])::view-transition-new(slide-text) {
-	animation: slide-from-left var(--transition-duration) ease-in-out;
 }

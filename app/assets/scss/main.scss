@@ -6,7 +6,8 @@
 	@include meta.load-css("reset");
 }
 
-@layer reset {
+@layer theme {
+	@include meta.load-css("theme/transitions");
 	@include meta.load-css("theme/typography");
 }
 

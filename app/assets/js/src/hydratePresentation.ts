@@ -128,6 +128,11 @@ export function hydratePresentation(): void {
 
 	// Keyboard controls to change slides
 	document.addEventListener('keydown', (e) => {
+		if (e.repeat) {
+			// Don't fire on repeated events from held keys
+			return;
+		}
+
 		if (
 			e.key === 'ArrowRight' ||
 			e.key === 'ArrowDown' ||
