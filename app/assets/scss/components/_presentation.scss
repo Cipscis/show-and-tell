@@ -1,0 +1,29 @@
+.presentation {
+	display: grid;
+	justify-content: center;
+
+	height: 100dvh;
+	overflow: auto;
+}
+
+.presentation:not(.hydrated) {
+	scroll-snap-type: y mandatory;
+	> slide {
+		scroll-snap-align: start;
+	}
+}
+
+.presentation.hydrated {
+	place-content: center;
+	> .slide {
+		grid-area: 1 / 1;
+		&:not([aria-current]) {
+			display: none;
+		}
+	}
+}
+
+.slide {
+	aspect-ratio: 16 / 9;
+	height: 100dvh;
+}

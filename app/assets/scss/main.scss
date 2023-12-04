@@ -1,1 +1,11 @@
-// TODO: Styles go here
+@use "sass:meta";
+
+@layer reset, theme, components;
+
+@layer reset {
+	@include meta.load-css("reset");
+}
+
+@layer components {
+	@include meta.load-css("components/presentation");
+}
