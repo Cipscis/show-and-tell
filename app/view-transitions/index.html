@@ -21,7 +21,7 @@
 			<div class="text">
 				<p>Transitions suck, everything just "snaps"</p>
 
-				<p>Animations are hard, what if it could be easier?</p>
+				<p>Animations are hard, what if they could be easier?</p>
 			</div>
 		</section>
 		<section class="slide slide--media-right js-slide"
@@ -46,7 +46,7 @@
 		</section>
 		<section class="slide slide--media-left js-slide"
 			data-transition-in-parts
-			data-transition-out="slide-to-right"
+			data-transition-out="slide-to-left"
 		>
 			<h2 class="title">View transitions</h2>
 			<div class="text">
@@ -56,8 +56,8 @@
 			</div>
 		</section>
 		<section class="slide slide--media js-slide"
-			data-transition-in="slide-from-left"
-			data-transition-out="slide-to-right"
+			data-transition-in="slide-from-right"
+			data-transition-out="slide-to-left"
 		>
 			<h2 class="title">View transitions</h2>
 
@@ -65,15 +65,15 @@
 				<p>View transitions can be controlled with CSS animations</p>
 			</div>
 			<code class="media">::view-transition-old(slide) {
-	animation: slide-to-right 0.3s ease-in-out;
+	animation: slide-to-left 0.3s ease-in-out;
 }
 
 ::view-transition-new(slide) {
-	animation: slide-from-left 0.3s ease-in-out;
+	animation: slide-from-right 0.3s ease-in-out;
 }</code>
 		</section>
 		<section class="slide slide--media js-slide"
-			data-transition-in="slide-from-left"
+			data-transition-in="slide-from-right"
 		>
 			<h2 class="title">View transitions</h2>
 
