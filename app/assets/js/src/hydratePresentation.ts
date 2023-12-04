@@ -5,19 +5,29 @@ import { debounce } from 'util/debounce';
  * Adds JavaScript interaction to a presentation element, if found.
  */
 export function hydratePresentation(): void {
-	const presentation = document.querySelector('.js-presentation');
+	const presentation = document.querySelector<HTMLElement>('.js-presentation');
 	if (!presentation) {
 		return;
 	}
 
-	const slides = Array.from(presentation.querySelectorAll('.js-slide'));
-	slides.forEach((slide, i) => slide.id = `slide-${i + 1}`);
+	const slides = Array.from(presentation.querySelectorAll<HTMLElement>('.js-slide'));
+	slides.forEach((slide, i) => {
+		const slideNumber = i + 1;
+		slide.id = `slide-${slideNumber}`;
+	});
+
+	const progress = document.createElement('progress');
 
 	if (slides.length > 0) {
 		const targetSelector = new URL(document.location.href).hash;
-		const initialSlide = slides.find((slide) => slide.matches(targetSelector)) ?? slides[0];
-		initialSlide.ariaCurrent = String(true);
+		const initialSlideIndex = slides.findIndex((slide) => slide.matches(targetSelector)) ?? slides[0];
+		slides[initialSlideIndex].ariaCurrent = String(true);
+
+		presentation.dataset.slideNumber = String(initialSlideIndex + 1);
+		progress.value = initialSlideIndex / (slides.length - 1);
 	}
+
+	presentation.append(progress);
 	presentation.classList.add('hydrated');
 
 	/**
@@ -60,6 +70,9 @@ export function hydratePresentation(): void {
 			slides[currentSlideIndex].ariaCurrent = null;
 			slides[newSlideIndex].ariaCurrent = String(true);
 			slides[newSlideIndex].classList.add('transitioning-in');
+
+			progress.value = newSlideIndex / (slides.length - 1);
+			presentation.dataset.slideNumber = String(newSlideIndex + 1);
 
 			history.replaceState(undefined, '', `#slide-${newSlideIndex + 1}`);
 		};

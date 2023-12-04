@@ -1,12 +1,53 @@
 @use "../theme/typography";
 
+:root {
+	--transition-duration: 0.3s;
+}
+
+::view-transition-group(*) {
+	animation-duration: var(--transition-duration);
+}
+
 .presentation {
 	display: grid;
 	justify-content: center;
 
 	aspect-ratio: 16 / 9;
 	height: 100dvh;
+	position: relative;
+
+	&::before {
+		content: attr(data-slide-number);
+		@include typography.base-small;
+
+		position: absolute;
+		bottom: 1rem;
+		right: 1rem;
+	}
+
+	> progress {
+		appearance: none;
+
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 0.5em;
+
+		view-transition-name: progress;
+
+		&::-webkit-progress-bar {
+			background: 0;
+		}
+		&::-webkit-progress-value {
+			background: currentColor;
+			opacity: 0.2;
+			transition: width var(--transition-duration);
+		}
+	}
 }
+
+::view-transition-group(progress) { animation-duration: 0s; }
 
 .presentation:not(.hydrated) {
 	overflow: auto;
@@ -54,17 +95,37 @@
 	}
 	&.slide--media {
 		grid-template-areas:
-			"title title"
-			"text media";
-		grid-template-rows: auto 1fr;
-		grid-template-columns: 1fr 1fr;
+			"title"
+			"text"
+			"media"
+			".";
+		grid-template-rows: auto auto auto 1fr;
 	}
-	&.slide--media-reverse {
+	&.slide--media-left {
 		grid-template-areas:
 			"title title"
 			"media text";
 		grid-template-rows: auto 1fr;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: repeat(2, 50%);
+	}
+	&.slide--media-right {
+		grid-template-areas:
+			"title title"
+			"text media";
+		grid-template-rows: auto 1fr;
+		grid-template-columns: repeat(2, 50%);
+	}
+	&.slide--media-double {
+		grid-template-areas:
+			"title"
+			"media"
+			"media-2"
+			".";
+		grid-template-rows: auto auto auto 1fr;
+
+		.media + .media {
+			grid-area: media-2;
+		}
 	}
 
 	.title {
@@ -75,14 +136,32 @@
 	.text {
 		grid-area: text;
 
-		@include typography.base;
-
 		p + p {
 			margin-top: 1em;
+		}
+
+		:where(ul, ol) {
+			li + li {
+				margin-top: 0.5em;
+			}
 		}
 	}
 	.media {
 		grid-area: media;
+	}
+
+	@include typography.base;
+
+	code {
+		display: block;
+		white-space: pre;
+		tab-size: 4;
+
+		@include typography.mono;
+
+		background: rgba(white, 0.1);
+		padding: 0.2em;
+		border-radius: 0.2em;
 	}
 
 	&:where(.transitioning-in, .transitioning-out) {
@@ -117,26 +196,26 @@
 	}
 }
 
-:has(:where(.transitioning-in[data-transition-in-speed="slow"], .transitioning-out[data-transition-out-speed="slow"]))::view-transition-group(*) {
-	animation-duration: 5s;
+:root:has(:where(.transitioning-in[data-transition-in-speed="slow"], .transitioning-out[data-transition-out-speed="slow"])) {
+	--transition-duration: 5s;
 }
 
-:has(:where(.transitioning-in[data-transition-in-speed="snap"], .transitioning-out[data-transition-out-speed="snap"]))::view-transition-group(*) {
-	animation-duration: 0s;
+:root:has(:where(.transitioning-in[data-transition-in-speed="snap"], .transitioning-out[data-transition-out-speed="snap"])) {
+	--transition-duration: 0s;
 }
 
 :has(.transitioning-out[data-transition-out="slide-to-right"])::view-transition-old(slide) {
-	animation: slide-to-right 0.5s ease-in-out;
+	animation: slide-to-right var(--transition-duration) ease-in-out;
 }
 
 :has(.transitioning-out .text[data-transition-out="slide-to-right"])::view-transition-old(slide-text) {
-	animation: slide-to-right 0.5s ease-in-out;
+	animation: slide-to-right var(--transition-duration) ease-in-out;
 }
 
 :has(.transitioning-in[data-transition-in="slide-from-left"])::view-transition-new(slide) {
-	animation: slide-from-left 0.5s ease-in-out;
+	animation: slide-from-left var(--transition-duration) ease-in-out;
 }
 
 :has(.transitioning-in .text[data-transition-in="slide-from-left"])::view-transition-new(slide-text) {
-	animation: slide-from-left 0.5s ease-in-out;
+	animation: slide-from-left var(--transition-duration) ease-in-out;
 }

@@ -1,21 +1,33 @@
 $_family-lilita-one: "Lilita One";
 $_family-varela-round: "Varela Round";
+$_family-roboto-mono: "Roboto Mono";
 
 $family-heading: $_family-lilita-one, "Arial", sans-serif;
 $family-base: $_family-varela-round, sans-serif;
+$family-mono: $_family-roboto-mono, monospace;
 
 $weight-normal: 400;
 $weight-bold: 700;
 
 @font-face {
 	font-family: $_family-varela-round;
+	font-weight: $weight-normal;
 	src: url("/assets/fonts/varela-round/VarelaRound-Regular.woff2") format("woff2");
 	font-display: auto;
 }
 
 @font-face {
 	font-family: $_family-lilita-one;
+	font-weight: $weight-normal;
 	src: url("/assets/fonts/lilita-one/LilitaOne-Regular.woff2") format("woff2");
+	font-display: auto;
+}
+
+@font-face {
+	font-family: $_family-roboto-mono;
+	font-weight: $weight-normal;
+	src: url("/assets/fonts/roboto-mono/RobotoMono-Regular.woff2") format("woff2");
+	font-display: auto;
 }
 
 @mixin heading {
@@ -43,5 +55,12 @@ $weight-bold: 700;
 	font-family: $family-base;
 	font-weight: $weight-normal;
 	font-size: 1rem;
+	line-height: 1.2;
+}
+
+@mixin mono {
+	font-family: $family-mono;
+	font-weight: $weight-normal;
+	font-size: 2rem;
 	line-height: 1.2;
 }
