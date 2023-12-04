@@ -20,7 +20,24 @@ export function hydratePresentation(): void {
 
 	if (slides.length > 0) {
 		const targetSelector = new URL(document.location.href).hash;
-		const initialSlideIndex = slides.findIndex((slide) => slide.matches(targetSelector)) ?? slides[0];
+		const initialSlideIndex = (() => {
+			try {
+				if (targetSelector) {
+					const targetIndex = slides.findIndex((slide) => slide.matches(targetSelector));
+					if (targetIndex !== -1) {
+						return targetIndex;
+					}
+				}
+			} catch (e) {
+				// The selector may have been invalid, just keep going
+			}
+
+			const newUrl = new URL(document.location.href);
+			newUrl.hash = '';
+			history.replaceState(undefined, '', newUrl);
+
+			return 0;
+		})();
 		slides[initialSlideIndex].ariaCurrent = String(true);
 
 		presentation.dataset.slideNumber = String(initialSlideIndex + 1);
@@ -74,7 +91,9 @@ export function hydratePresentation(): void {
 			progress.value = newSlideIndex / (slides.length - 1);
 			presentation.dataset.slideNumber = String(newSlideIndex + 1);
 
-			history.replaceState(undefined, '', `#slide-${newSlideIndex + 1}`);
+			const newUrl = new URL(document.location.href);
+			newUrl.hash = `slide-${newSlideIndex + 1}`;
+			history.replaceState(undefined, '', newUrl);
 		};
 
 		const afterChange = () => {
@@ -131,6 +150,18 @@ export function hydratePresentation(): void {
 
 	// Mouse controls to change slides
 	document.addEventListener('click', () => {
+		// If there's any text selection, ignore the click
+		const selection = getSelection();
+		if (
+			selection &&
+			(
+				selection.rangeCount > 1 ||
+				!selection.getRangeAt(0).collapsed
+			)
+		) {
+			return;
+		}
+
 		goToSlide((i) => i + 1);
 	});
 
