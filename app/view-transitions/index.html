@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>View transitions</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<meta name="description" content="A presentation on the View Transitions API." />
+
+	<link rel="stylesheet" href="/show-and-tell/assets/css/main.css" />
+	<script type="module" src="/show-and-tell/assets/js/dist/main.js"></script>
+</head>
+<body>
+	<article class="presentation js-presentation">
+		<section class="slide slide--title js-slide"
+			data-transition-out-speed="snap"
+		>
+			<h2 class="title">View transitions</h2>
+		</section>
+		<section class="slide slide--text js-slide">
+			<h2 class="title">View transitions</h2>
+			<div class="text">
+				<p>Transitions suck, everything just "snaps"</p>
+
+				<p>Animations are hard, what if it could be easier?</p>
+			</div>
+		</section>
+		<section class="slide slide--media-right js-slide"
+			data-transition-out-speed="slow"
+		>
+			<h2 class="title">View transitions</h2>
+			<div class="text">
+				<p>You just saw a view transition. Did you spot it?</p>
+
+				<p>Let's slow things down</p>
+			</div>
+		</section>
+		<section class="slide slide--media-right js-slide"
+			data-transition-out-parts
+		>
+			<h2 class="title">View transitions</h2>
+			<div class="text">
+				<p>The standard view transition is a cross-fade</p>
+
+				<p>But things can get more complicated</p>
+			</div>
+		</section>
+		<section class="slide slide--media-left js-slide"
+			data-transition-in-parts
+			data-transition-out="slide-to-right"
+		>
+			<h2 class="title">View transitions</h2>
+			<div class="text">
+				<p>Different elements can have their own view transitions</p>
+
+				<p>As well as cross-fading, elements move and change size</p>
+			</div>
+		</section>
+		<section class="slide slide--media js-slide"
+			data-transition-in="slide-from-left"
+			data-transition-out-parts
+		>
+			<h2 class="title">View transitions</h2>
+
+			<div class="text">
+				<p>View transitions can be controlled with CSS animations</p>
+			</div>
+			<code class="media">::view-transition-old(slide) {
+	animation: slide-to-right 0.3s ease-in-out;
+}
+
+::view-transition-new(slide) {
+	animation: slide-from-left 0.3s ease-in-out;
+}</code>
+		</section>
+		<section class="slide slide--media js-slide"
+			data-transition-in-parts
+		>
+			<h2 class="title">View transitions</h2>
+
+			<div class="text">
+				<p>View transitions are triggered with JavaScript</p>
+			</div>
+			<code class="media">if (document.startViewTransition) {
+	document.startViewTransition(() => {
+		// Modify the DOM in some way
+	});
+}</code>
+		</section>
+		<section class="slide slide--media-right js-slide"
+			data-transition-out-speed="slow"
+		>
+			<h2 class="title">View transitions</h2>
+
+			<div class="text">
+				<p>View transitions can make complex animations simple</p>
+			</div>
+
+			<ul class="media" style="display: grid; grid-template-columns: repeat(2, 50%);">
+				<li style="view-transition-name: example-item-1;">Item 1</li>
+				<li style="view-transition-name: example-item-2;">Item 2</li>
+				<li style="view-transition-name: example-item-3;">Item 3</li>
+				<li style="view-transition-name: example-item-4;">Item 4</li>
+				<li style="view-transition-name: example-item-5;">Item 5</li>
+				<li style="view-transition-name: example-item-6;">Item 6</li>
+			</ul>
+		</section>
+		<section class="slide slide--media-right js-slide">
+			<h2 class="title">View transitions</h2>
+
+			<div class="text">
+				<p>View transitions can make complex animations simple</p>
+			</div>
+
+			<ul class="media" style="display: grid; grid-template-columns: repeat(2, 50%);">
+				<li style="view-transition-name: example-item-6;">Item 6</li>
+				<li style="view-transition-name: example-item-4;">Item 4</li>
+				<li style="view-transition-name: example-item-5;">Item 5</li>
+				<li style="view-transition-name: example-item-2;">Item 2</li>
+				<li style="view-transition-name: example-item-1;">Item 1</li>
+				<li style="view-transition-name: example-item-3;">Item 3</li>
+			</ul>
+		</section>
+		<section class="slide slide--media-double js-slide"
+			data-transition-out-speed="slow"
+		>
+			<h2 class="title">View transitions</h2>
+
+			<code class="media"><span style="display: inline-block; view-transition-name: example-item-code-1;">&lt;li style="view-transition-name: example-item-1;">Item 1&lt;/li></span>
+<span style="display: inline-block; view-transition-name: example-item-code-2;">&lt;li style="view-transition-name: example-item-2;">Item 2&lt;/li></span>
+<span style="display: inline-block; view-transition-name: example-item-code-3;">&lt;li style="view-transition-name: example-item-3;">Item 3&lt;/li></span>
+<span style="display: inline-block; view-transition-name: example-item-code-4;">&lt;li style="view-transition-name: example-item-4;">Item 4&lt;/li></span>
+<span style="display: inline-block; view-transition-name: example-item-code-5;">&lt;li style="view-transition-name: example-item-5;">Item 5&lt;/li></span>
+<span style="display: inline-block; view-transition-name: example-item-code-6;">&lt;li style="view-transition-name: example-item-6;">Item 6&lt;/li></span></code>
+
+			<ul class="media" style="display: grid; grid-template-columns: repeat(2, 50%);">
+				<li style="view-transition-name: example-item-1;">Item 1</li>
+				<li style="view-transition-name: example-item-2;">Item 2</li>
+				<li style="view-transition-name: example-item-3;">Item 3</li>
+				<li style="view-transition-name: example-item-4;">Item 4</li>
+				<li style="view-transition-name: example-item-5;">Item 5</li>
+				<li style="view-transition-name: example-item-6;">Item 6</li>
+			</ul>
+		</section>
+		<section class="slide slide--media-double js-slide">
+			<h2 class="title">View transitions</h2>
+
+			<code class="media"><span style="display: inline-block; view-transition-name: example-item-code-6;">&lt;li style="view-transition-name: example-item-6;">Item 6&lt;/li></span>
+<span style="display: inline-block; view-transition-name: example-item-code-4;">&lt;li style="view-transition-name: example-item-4;">Item 4&lt;/li></span>
+<span style="display: inline-block; view-transition-name: example-item-code-5;">&lt;li style="view-transition-name: example-item-5;">Item 5&lt;/li></span>
+<span style="display: inline-block; view-transition-name: example-item-code-2;">&lt;li style="view-transition-name: example-item-2;">Item 2&lt;/li></span>
+<span style="display: inline-block; view-transition-name: example-item-code-1;">&lt;li style="view-transition-name: example-item-1;">Item 1&lt;/li></span>
+<span style="display: inline-block; view-transition-name: example-item-code-3;">&lt;li style="view-transition-name: example-item-3;">Item 3&lt;/li></span>
+</code>
+			<ul class="media" style="display: grid; grid-template-columns: repeat(2, 50%);">
+				<li style="view-transition-name: example-item-6;">Item 6</li>
+				<li style="view-transition-name: example-item-4;">Item 4</li>
+				<li style="view-transition-name: example-item-5;">Item 5</li>
+				<li style="view-transition-name: example-item-2;">Item 2</li>
+				<li style="view-transition-name: example-item-1;">Item 1</li>
+				<li style="view-transition-name: example-item-3;">Item 3</li>
+			</ul>
+		</section>
+
+		<section class="slide slide--text js-slide">
+			<h2 class="title">Caveats</h2>
+
+			<div class="text">
+				<p>
+					Only supported in Chromium currently<br>
+					<em>But</em> easy to implement as a progressive enhancement
+				</p>
+
+				<p>
+					TypeScript doesn't ship with type definitions for this API yet<br>
+					<em>But</em> it's simple to write the necessary type definitions from the documentation
+				</p>
+
+				<p>
+					They are harder to use within a framework (like React) that controls DOM updates<br>
+					<em>But</em> it doesn't take too much work to write a custom hook to make them easy to use
+				</p>
+
+				<p>
+					It only works for single page applications<br>
+					<em>But</em> support for transitions over a navigation is coming, currently behind a flag
+				</p>
+			</div>
+		</section>
+
+		<section class="slide slide--text js-slide">
+			<h2 class="title">Links</h2>
+
+			<div class="text">
+				<ul>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API" target="_blank">View Transitions API (MDN)</a></li>
+					<li><a href="https://developer.chrome.com/docs/web-platform/view-transitions/" target="_blank">Smooth and simple transitions with the View Transitions API</a></li>
+					<li><a href="https://daverupert.com/2023/05/getting-started-view-transitions/" target="_blank">Getting started with View Transitions on multi-page apps</a></li>
+					<li>These slides: <a href="https://cipscis.github.io/show-and-tell/view-transitions" target="_blank">https://cipscis.github.io/show-and-tell/view-transitions</a></li>
+				</ul>
+			</div>
+		</div>
+	</article>
+</body>
+</html>
