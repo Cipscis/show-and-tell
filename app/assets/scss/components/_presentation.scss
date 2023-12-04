@@ -158,6 +158,9 @@
 		tab-size: 4;
 
 		@include typography.mono;
+		&.code--small {
+			@include typography.mono-small;
+		}
 
 		background: rgba(white, 0.1);
 		padding: 0.2em;

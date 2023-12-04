@@ -12,21 +12,21 @@ $weight-bold: 700;
 @font-face {
 	font-family: $_family-varela-round;
 	font-weight: $weight-normal;
-	src: url("/assets/fonts/varela-round/VarelaRound-Regular.woff2") format("woff2");
+	src: url("/show-and-tell/assets/fonts/varela-round/VarelaRound-Regular.woff2") format("woff2");
 	font-display: auto;
 }
 
 @font-face {
 	font-family: $_family-lilita-one;
 	font-weight: $weight-normal;
-	src: url("/assets/fonts/lilita-one/LilitaOne-Regular.woff2") format("woff2");
+	src: url("/show-and-tell/assets/fonts/lilita-one/LilitaOne-Regular.woff2") format("woff2");
 	font-display: auto;
 }
 
 @font-face {
 	font-family: $_family-roboto-mono;
 	font-weight: $weight-normal;
-	src: url("/assets/fonts/roboto-mono/RobotoMono-Regular.woff2") format("woff2");
+	src: url("/show-and-tell/assets/fonts/roboto-mono/RobotoMono-Regular.woff2") format("woff2");
 	font-display: auto;
 }
 
@@ -62,5 +62,12 @@ $weight-bold: 700;
 	font-family: $family-mono;
 	font-weight: $weight-normal;
 	font-size: 2rem;
+	line-height: 1.2;
+}
+
+@mixin mono-small {
+	font-family: $family-mono;
+	font-weight: $weight-normal;
+	font-size: 1.5rem;
 	line-height: 1.2;
 }
