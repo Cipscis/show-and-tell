@@ -1,19 +1,24 @@
+@use "../theme/typography";
+
 .presentation {
 	display: grid;
 	justify-content: center;
 
+	aspect-ratio: 16 / 9;
 	height: 100dvh;
-	overflow: auto;
 }
 
 .presentation:not(.hydrated) {
+	overflow: auto;
 	scroll-snap-type: y mandatory;
-	> slide {
+	> .slide {
 		scroll-snap-align: start;
 	}
 }
 
 .presentation.hydrated {
+	margin: auto;
+	overflow: hidden;
 	place-content: center;
 	> .slide {
 		grid-area: 1 / 1;
@@ -26,4 +31,112 @@
 .slide {
 	aspect-ratio: 16 / 9;
 	height: 100dvh;
+
+	display: grid;
+	gap: 2rem;
+	position: relative;
+	overflow: hidden;
+
+	padding: 4rem;
+
+	&.slide--title {
+		grid-template-areas: "title";
+		place-content: center;
+		.title {
+			@include typography.heading-large;
+		}
+	}
+	&.slide--text {
+		grid-template-areas:
+			"title"
+			"text";
+		grid-template-rows: auto 1fr;
+	}
+	&.slide--media {
+		grid-template-areas:
+			"title title"
+			"text media";
+		grid-template-rows: auto 1fr;
+		grid-template-columns: 1fr 1fr;
+	}
+	&.slide--media-reverse {
+		grid-template-areas:
+			"title title"
+			"media text";
+		grid-template-rows: auto 1fr;
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.title {
+		grid-area: title;
+
+		@include typography.heading;
+	}
+	.text {
+		grid-area: text;
+
+		@include typography.base;
+
+		p + p {
+			margin-top: 1em;
+		}
+	}
+	.media {
+		grid-area: media;
+	}
+
+	&:where(.transitioning-in, .transitioning-out) {
+		view-transition-name: slide;
+	}
+
+	&:where(.transitioning-in[data-transition-in-parts], .transitioning-out[data-transition-out-parts]) {
+		.title {
+			view-transition-name: slide-title;
+		}
+		.text {
+			view-transition-name: slide-text;
+		}
+		.media {
+			view-transition-name: slide-media;
+		}
+	}
+}
+
+// Transitioning rules
+@keyframes slide-to-right {
+	to {
+		transform: translateX(100%);
+		opacity: 0;
+	}
+}
+
+@keyframes slide-from-left {
+	from {
+		transform: translateX(-100%);
+		opacity: 0;
+	}
+}
+
+:has(:where(.transitioning-in[data-transition-in-speed="slow"], .transitioning-out[data-transition-out-speed="slow"]))::view-transition-group(*) {
+	animation-duration: 5s;
+}
+
+:has(:where(.transitioning-in[data-transition-in-speed="snap"], .transitioning-out[data-transition-out-speed="snap"]))::view-transition-group(*) {
+	animation-duration: 0s;
+}
+
+:has(.transitioning-out[data-transition-out="slide-to-right"])::view-transition-old(slide) {
+	animation: slide-to-right 0.5s ease-in-out;
+}
+
+:has(.transitioning-out .text[data-transition-out="slide-to-right"])::view-transition-old(slide-text) {
+	animation: slide-to-right 0.5s ease-in-out;
+}
+
+:has(.transitioning-in[data-transition-in="slide-from-left"])::view-transition-new(slide) {
+	animation: slide-from-left 0.5s ease-in-out;
+}
+
+:has(.transitioning-in .text[data-transition-in="slide-from-left"])::view-transition-new(slide-text) {
+	animation: slide-from-left 0.5s ease-in-out;
 }

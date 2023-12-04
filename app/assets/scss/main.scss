@@ -6,6 +6,10 @@
 	@include meta.load-css("reset");
 }
 
+@layer reset {
+	@include meta.load-css("theme/typography");
+}
+
 @layer components {
 	@include meta.load-css("components/presentation");
 }

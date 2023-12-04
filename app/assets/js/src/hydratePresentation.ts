@@ -11,14 +11,14 @@ export function hydratePresentation(): void {
 	}
 
 	const slides = Array.from(presentation.querySelectorAll('.js-slide'));
+	slides.forEach((slide, i) => slide.id = `slide-${i + 1}`);
+
 	if (slides.length > 0) {
-		slides[0].ariaCurrent = String(true);
+		const targetSelector = new URL(document.location.href).hash;
+		const initialSlide = slides.find((slide) => slide.matches(targetSelector)) ?? slides[0];
+		initialSlide.ariaCurrent = String(true);
 	}
 	presentation.classList.add('hydrated');
-
-	const getCurrentSlideIndex = (): number => {
-		return slides.findIndex((slide) => slide.ariaCurrent === String(true));
-	};
 
 	/**
 	 * Navigate to a new slide, either be specified index or based on modifying
@@ -30,7 +30,7 @@ export function hydratePresentation(): void {
 	const goToSlide = (
 		getNewSlideIndex: ((currentSlideIndex: number) => number) | number
 	): Promise<void> => {
-		const currentSlideIndex = getCurrentSlideIndex();
+		const currentSlideIndex = slides.findIndex((slide) => slide.ariaCurrent === String(true));
 
 		// Don't allow navigating before the first slide or after the last slide
 		const newSlideIndex = clamp(
@@ -49,30 +49,47 @@ export function hydratePresentation(): void {
 			return Promise.resolve();
 		}
 
+		const beforeChange = () => {
+			slides[currentSlideIndex].classList.add('transitioning-out');
+		};
+
 		const changeSlide = () => {
 			document.documentElement.dataset.currentSlide = String(currentSlideIndex);
 			document.documentElement.dataset.nextSlide = String(newSlideIndex);
+
 			slides[currentSlideIndex].ariaCurrent = null;
 			slides[newSlideIndex].ariaCurrent = String(true);
+			slides[newSlideIndex].classList.add('transitioning-in');
+
+			history.replaceState(undefined, '', `#slide-${newSlideIndex + 1}`);
 		};
 
-		const cleanup = () => {
+		const afterChange = () => {
 			delete document.documentElement.dataset.currentSlide;
 			delete document.documentElement.dataset.nextSlide;
+
+			presentation.querySelector('.slide.transitioning-in')?.classList.remove('transitioning-in');
+			presentation.querySelector('.slide.transitioning-out')?.classList.remove('transitioning-out');
 		};
 
-		// If we can't do a view transition, just change immediately
-		if (!document.startViewTransition) {
+		// If we can't do a view transition, or we're not
+		// moving to the next slide, just change immediately
+		if (
+			!document.startViewTransition ||
+			(newSlideIndex - currentSlideIndex) !== 1
+		) {
+			beforeChange();
 			changeSlide();
-			cleanup();
+			afterChange();
 			return Promise.resolve();
 		}
 
-		// Change slide with a view transition if possible
+		// Change slide with a view transition
+		beforeChange();
 		const viewTransition = document.startViewTransition(() => {
 			changeSlide();
 		});
-		cleanup();
+		viewTransition.finished.then(afterChange);
 
 		return viewTransition.finished;
 	};

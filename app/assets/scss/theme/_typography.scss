@@ -1,0 +1,47 @@
+$_family-lilita-one: "Lilita One";
+$_family-varela-round: "Varela Round";
+
+$family-heading: $_family-lilita-one, "Arial", sans-serif;
+$family-base: $_family-varela-round, sans-serif;
+
+$weight-normal: 400;
+$weight-bold: 700;
+
+@font-face {
+	font-family: $_family-varela-round;
+	src: url("/assets/fonts/varela-round/VarelaRound-Regular.woff2") format("woff2");
+	font-display: auto;
+}
+
+@font-face {
+	font-family: $_family-lilita-one;
+	src: url("/assets/fonts/lilita-one/LilitaOne-Regular.woff2") format("woff2");
+}
+
+@mixin heading {
+	font-family: $family-heading;
+	font-weight: $weight-normal;
+	font-size: 4rem;
+	line-height: 1.2;
+}
+
+@mixin heading-large {
+	font-family: $family-heading;
+	font-weight: $weight-normal;
+	font-size: 6rem;
+	line-height: 1.2;
+}
+
+@mixin base {
+	font-family: $family-base;
+	font-weight: $weight-normal;
+	font-size: 2rem;
+	line-height: 1.2;
+}
+
+@mixin base-small {
+	font-family: $family-base;
+	font-weight: $weight-normal;
+	font-size: 1rem;
+	line-height: 1.2;
+}
