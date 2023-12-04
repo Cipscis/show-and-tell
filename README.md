@@ -1,100 +1,14 @@
-# Using this template
+# show-and-tell
 
-This is my template repository to use when creating new projects. The top section of this readme is for how to use it to start a new project, and should be removed as part of the setup process.
+![Build and deploy status badge](https://github.com/cipscis/show-and-tell/actions/workflows/build-and-deploy.yml/badge.svg)
 
-## Setup
-
-You will need to install [Node.js](https://nodejs.org/en/) before using this template.
-
-1. Click "[Use this template](https://github.com/cipscis/base-project/generate)" to create a new repository based on this one.
-2. Update the `package.json` file to reflect your new project's details.
-3. Update names throughout the package.
-	a. Replace `base-project` with the name of your project as it is used in code.
-	b. Replace `Base Project` Replace with the name of your project as it is used in documentation.
-	c. If you're not me, replace `@cipscis` with your npm username and then `cipscis` with your GitHub username, and be sure to also update the `author` property in the `package.json`.
-4. Create a `.env` file. See [.env](#env-1) for more information.
-5. Run `npm install`.
-6. Update this `README.md` file and the `CHANGELOG.md` file to remove the instruction sections.
-
-Now you're ready to work on code in this project.
-
-## Usage
-
-Using the files specified in `package.json`, you can create a project to be installed with npm.
-
-In the `app` folder, which can be deployed to GitHub Pages but is not included when your project is installed, you can document your project. Here, the project files outside the `app` folders can be included in the bundle by using root-relative paths such as `import foo from '/main.js';`
-
-Once you have an initial version of your project ready to push, you will want to update the `version` attribute of your `package.json` file to `"1.0.0"`. See [Semantic Versioning](https://semver.org/spec/v2.0.0.html) for more information on version numbers.
-
-You should also update the `CHANGELOG.md` file to describe your changes. This is particularly important after your initial 1.0.0 version.
-
-## Structure
-
-### Frontend assets
-
-Assets such as CSS and JavaScript are contained in `/app/assets`. In here, the contents of the `scss` folder are used to compile CSS files into the `css` folder.
-
-The `/app/assets/js` folder contains a `src` folder and a `dist` folder. Any JavaScript or TypeScript files inside the `src` folder are bundled into the `dist` folder. By default, eslint is configured to look for a single entry point at `/app/assets/js/src/main.ts`.
-
-### Backend assets
-
-Node.js code sits within the `/scripts` directory. This includes the build system, which uses [esbuild](https://esbuild.github.io/), as well as the [Express](https://expressjs.com/) server code.
-
-The build system's entry points are defined within [`build-config.ts`](./scripts/build-config.ts).
-
-By default, the server code just runs a static http server that serves files in the `/app` directory, but it can be extended to add additional functionality.
-
-This server only runs locally, so any additional functionality will not be available on GitHub Pages.
-
-## Configuration
-
-### package.json
-
-By default, the `package.json` file is configured to set the project to be of type `module`. This means NodeJS will use ES module syntax as opposed to its default CommonJS syntax, allowing the use of `import` and `export` keywords.
-
-For more information on the differences, see [Differences between ES modules and CommonJS](https://nodejs.org/api/esm.html#esm_differences_between_es_modules_and_commonjs)
-
-### Linting
-
-[eslint](https://www.npmjs.com/package/eslint) is configured in [`.eslintrc.cjs`](./.eslintrc.cjs), and [stylelint](https://www.npmjs.com/package/stylelint) is configured in [`stylelint.config.cjs`](./stylelint.config.cjs)
-
-### Tests
-
-The [Jest](https://jestjs.io/)-based test suite is configured in [jest.config.js](./jest.config.js). No custom test name matcher is specified, which means [Jest's default matcher](https://jestjs.io/docs/configuration#testmatch-arraystring) will be used:
-
-> By default it looks for `.js`, `.jsx`, `.ts` and `.tsx` files inside of `__tests__` folders, as well as any files with a suffix of `.test` or `.spec` (e.g. `Component.test.js` or `Component.spec.js`). It will also find files called `test.js` or `spec.js`.
-
-### .env
-
-See [.env](#env-1) for information on setting up a `.env` file.
-
-## GitHub Pages
-
-This project is set up to use a GitHub Action every time new code is pushed to the `main` branch. This `build-and-deploy` workflow runs the `build` npm script, then runs the test script, then if the tests passed it deploys the contents of the `app` directory by committing them to a `gh-pages` branch. This `gh-pages` branch should be configured in GitHub to be published to GitHub Pages.
-
-When publishing a project using [GitHub Pages](https://pages.github.com/), the project usually appears at a URL with a path, such as `https://cipscis.github.io/base-project`. This means using root relative URLs such as `/assets/css/main.css` would work locally, but would break when the project is published on GitHub Pages.
-
-To fix this, the local Node.js server looks for a `PROJECT_NAME` variable in your [`.env`](#env-1) file. If it finds one, it sets up redirects so URLs starting with `/${PROJECT_NAME}` can be used as though they were root relative, so they will find your assets.
-
-By default, the `index.html` file is configured to be published to GitHub Pages under the project name `base-project`. When you use it as a base for your own project, you will need to update these URLs.
-
----
-
-**Delete everything above here when creating a new project**
-
----
-
-# base-project
-
-![Build and deploy status badge](https://github.com/cipscis/base-project/actions/workflows/build-and-deploy.yml/badge.svg)
-
-[Base Project](https://cipscis.github.io/base-project/)
+[Show and Tell](https://cipscis.github.io/show-and-tell/)
 
 ## Development
 
 You will need to install [Node.js](https://nodejs.org/en/) before working on this project.
 
-1. Clone the repository using `git clone https://github.com/cipscis/base-project.git`.
+1. Clone the repository using `git clone https://github.com/cipscis/show-and-tell.git`.
 2. Run `npm install` to install development dependencies.
 3. Create a [`.env`](#env) file.
 4. Run `npm start` to run the local server and watch CSS and JS files for changes.
@@ -134,7 +48,7 @@ Used by [Express](https://expressjs.com/) to determine which port to use when ru
 An example `.env` file you can use for development is:
 
 ```
-PROJECT_NAME = "base-project"
+PROJECT_NAME = "show-and-tell"
 MODE = "development"
 PORT = "8080"
 ```

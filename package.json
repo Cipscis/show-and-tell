@@ -1,7 +1,7 @@
 {
-	"name": "@cipscis/base-project",
+	"name": "@cipscis/show-and-tell",
 	"version": "0.1.0",
-	"description": "This is my base project to use when creating new projects.",
+	"description": "This is my Show and Tell to use when creating new projects.",
 	"private": true,
 	"type": "module",
 	"scripts": {
@@ -11,7 +11,6 @@
 		"buildCss": "sass app/assets/scss:app/assets/css",
 		"build": "concurrently \"npm run buildJs\" \"npm run buildCss\"",
 
-		"pretest": "tsc --noEmit",
 		"test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
 		"testCoverage": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --collectCoverage",
 
@@ -25,12 +24,12 @@
 		"lint": "npm run lintJs && npm run lintCss",
 
 		"start": "concurrently --kill-others \"npm run server\" \"npm run watch\"",
-		"prepare": "npm test"
+		"prepare": "tsc --noEmit && npm test"
 	},
 	"author": "Mark Hanna",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/cipscis/base-project.git"
+		"url": "https://github.com/cipscis/show-and-tell.git"
 	},
 	"license": "Hippocratic-2.1",
 	"devDependencies": {
