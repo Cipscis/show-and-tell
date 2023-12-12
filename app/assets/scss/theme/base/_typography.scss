@@ -1,0 +1,22 @@
+@use "../typography";
+
+@font-face {
+	font-family: typography.$font-face-varela-round;
+	font-weight: typography.$weight-normal;
+	src: url("/show-and-tell/assets/fonts/varela-round/VarelaRound-Regular.woff2") format("woff2");
+	font-display: auto;
+}
+
+@font-face {
+	font-family: typography.$font-face-lilita-one;
+	font-weight: typography.$weight-normal;
+	src: url("/show-and-tell/assets/fonts/lilita-one/LilitaOne-Regular.woff2") format("woff2");
+	font-display: auto;
+}
+
+@font-face {
+	font-family: typography.$font-face-roboto-mono;
+	font-weight: typography.$weight-normal;
+	src: url("/show-and-tell/assets/fonts/roboto-mono/RobotoMono-Regular.woff2") format("woff2");
+	font-display: auto;
+}

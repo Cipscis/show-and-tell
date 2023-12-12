@@ -7,8 +7,8 @@
 }
 
 @layer theme {
-	@include meta.load-css("theme/transitions");
-	@include meta.load-css("theme/typography");
+	@include meta.load-css("theme/base/typography");
+	@include meta.load-css("theme/base/transitions");
 }
 
 @layer components {

@@ -128,6 +128,9 @@
 	}
 	.text {
 		grid-area: text;
+		display: grid;
+		grid-template-columns: 1fr;
+		align-content: center;
 
 		p + p {
 			margin-top: 1em;
@@ -138,9 +141,35 @@
 				margin-top: 0.5em;
 			}
 		}
+
+		dl > div {
+			+ div {
+				margin-top: 1em;
+			}
+		}
+
+		dt {
+			@include typography.base-bold;
+		}
+
+		dd {
+			margin: 0;
+		}
+	}
+	.text--top {
+		align-content: start;
 	}
 	.media {
 		grid-area: media;
+
+		img {
+			border-radius: 0.5rem;
+		}
+
+	}
+	figure.media {
+		display: grid;
+		place-items: center;
 	}
 
 	@include typography.base;

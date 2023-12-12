@@ -16,16 +16,65 @@
 		>
 			<h2 class="title">View transitions</h2>
 		</section>
-		<section class="slide slide--text js-slide">
+		<section class="slide slide--media-right js-slide"
+			data-transition-out-speed="snap"
+		>
+			<h2 class="title">View transitions</h2>
+			<div class="text">
+				<p>Mark Hanna (nerd)</p>
+
+				<p>I write code for fun</p>
+
+				<p>I have two cats, Milo and Cass</p>
+
+				<p>Welcome to the first front end show & tell!</p>
+			</div>
+			<figure class="media">
+				<img src="https://media.discordapp.net/attachments/1133173219961094194/1184207828194447410/20230302_155526.jpg?ex=658b227b&is=6578ad7b&hm=68c416179bfb2e6143d6d2cf5f7c327247b3210247f83e58fbcf3eae8a703a4f&=&format=webp&width=598&height=798" alt="A white person with long curly hair - me - holding a young white and tabby cat - Milo - up on my shoulder.">
+			</figure>
+		</section>
+		<section class="slide slide--media-right js-slide"
+			data-transition-out-speed="snap"
+		>
+			<h2 class="title">View transitions</h2>
+			<div class="text">
+				<p>Some technical terms</p>
+
+				<dl>
+					<div>
+						<dt>JavaScript</dt>
+						<dd>A programming language that runs in your web browser, which can make web pages react to user input</dd>
+					</div>
+					<div>
+						<dt>CSS</dt>
+						<dd>A declarative language that describes how content should look in a web browser, including layout and animations</dd>
+					</div>
+					<div>
+						<dt>DOM</dt>
+						<dd><strong>D</strong>ocument <strong>O</strong>bject <strong>M</strong>odel - the way your web browser understands HTML and exposes it to JavaScript code</dd>
+					</div>
+				</dl>
+			</div>
+			<figure class="media">
+				<img src="https://media.discordapp.net/attachments/1133173219961094194/1184211070005543002/20230302_182141.jpg?ex=658b2580&is=6578b080&hm=759c7bc3147e8adee9dc419213f64774f23923d2a8cbb4eee3761c3d968e89a6&=&format=webp&width=598&height=798" alt="A white person with long curly hair - me - sitting on the couch while holding a young white and tabby cat - Cass - is resting on my shoulder.">
+			</figure>
+		</section>
+		<section class="slide slide--media-right js-slide"
+			data-transition-out-parts
+		>
 			<h2 class="title">View transitions</h2>
 			<div class="text">
 				<p>Transitions suck, everything just "snaps"</p>
 
 				<p>Animations are hard, what if they could be easier?</p>
 			</div>
+			<figure class="media" style="view-transition-name: media;">
+				<img src="https://media.discordapp.net/attachments/1133173219961094194/1184217903315296306/20230619_165704.jpg?ex=658b2bdd&is=6578b6dd&hm=08dfeef3a07ccf43e899cafa5eca9928bb14aa659fb7441c683f416d898f6fad&=&format=webp&width=450&height=798" alt="Milo the young white and tabby cat stending up and grabbing onto the cables underneath my desk.">
+			</figure>
 		</section>
 		<section class="slide slide--media-right js-slide"
 			data-transition-out-speed="slow"
+			data-transition-in-parts
 		>
 			<h2 class="title">View transitions</h2>
 			<div class="text">
@@ -33,6 +82,9 @@
 
 				<p>Let's slow things down</p>
 			</div>
+			<figure class="media" style="view-transition-name: media;">
+				<img src="https://media.discordapp.net/attachments/1133173219961094194/1184213216318988308/20230829_124227.jpg?ex=658b2780&is=6578b280&hm=2988b200185d18830f24fd39259c2d187d76ddf0e94c248ed2168c57958c2076&=&format=webp&width=450&height=798" alt="Cass and Milo the white and tabby cats looking at the camera. Cass is curled up in a box, Milo is sitting behind him.">
+			</figure>
 		</section>
 		<section class="slide slide--media-right js-slide"
 			data-transition-out-parts
@@ -43,10 +95,12 @@
 
 				<p>But things can get more complicated</p>
 			</div>
+			<figure class="media" data-transition-out="slide-to-right" style="view-transition-name: slide-media-out;">
+				<img src="https://media.discordapp.net/attachments/1133173219961094194/1184213912858660984/20230725_131455.jpg?ex=658b2826&is=6578b326&hm=1c8f3fdadedf6da8c68d9502807c26835d0f2552b13b87d29910e787102326bb&=&format=webp&width=450&height=798" alt="Cass and Milo the white and tabby cats looking out a window. Their heads are stacked like cartoon characters peeking around a corner.">
+			</figure>
 		</section>
 		<section class="slide slide--media-left js-slide"
 			data-transition-in-parts
-			data-transition-out="slide-to-left"
 		>
 			<h2 class="title">View transitions</h2>
 			<div class="text">
@@ -54,6 +108,9 @@
 
 				<p>As well as cross-fading, elements move and change size</p>
 			</div>
+			<figure class="media" data-transition-in="slide-from-left" style="view-transition-name: slide-media-in;">
+				<img src="https://media.discordapp.net/attachments/1133173219961094194/1184217188924657765/20230527_152807.jpg?ex=658b2b33&is=6578b633&hm=0965a9f33a0e6fc7238912b178bbdad2dabfb95449dbd36dd350b906ed86263d&=&format=webp&width=450&height=798" alt="Cass and Milo the white and tabby cats asleep together on a red blanket, with their heads pressed together.">
+			</figure>
 		</section>
 		<section class="slide slide--media js-slide"
 			data-transition-in="slide-from-right"
@@ -91,7 +148,7 @@
 		>
 			<h2 class="title">View transitions</h2>
 
-			<div class="text">
+			<div class="text text--top">
 				<p>View transitions can make complex animations simple</p>
 			</div>
 
@@ -107,7 +164,7 @@
 		<section class="slide slide--media-right js-slide">
 			<h2 class="title">View transitions</h2>
 
-			<div class="text">
+			<div class="text text--top">
 				<p>View transitions can make complex animations simple</p>
 			</div>
 

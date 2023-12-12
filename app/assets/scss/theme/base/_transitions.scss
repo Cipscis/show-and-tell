@@ -1,0 +1,91 @@
+:root {
+	--transition-duration: 0.3s;
+}
+
+::view-transition-group(*) {
+	animation-duration: var(--transition-duration);
+}
+
+:root:has(:where(.transitioning-in[data-transition-in-speed="slow"], .transitioning-out[data-transition-out-speed="slow"])) {
+	--transition-duration: 5s;
+}
+
+:root:has(:where(.transitioning-in[data-transition-in-speed="snap"], .transitioning-out[data-transition-out-speed="snap"])) {
+	--transition-duration: 0s;
+}
+
+@keyframes slide-to-right {
+	to {
+		transform: translateX(100vw);
+		opacity: 0;
+	}
+}
+@keyframes slide-to-left {
+	to {
+		transform: translateX(-100vw);
+		opacity: 0;
+	}
+}
+
+@keyframes slide-from-right {
+	from {
+		transform: translateX(100vw);
+		opacity: 0;
+	}
+}
+@keyframes slide-from-left {
+	from {
+		transform: translateX(-100vw);
+		opacity: 0;
+	}
+}
+
+:root:has(.transitioning-out[data-transition-out="slide-to-right"])::view-transition-old(slide) {
+	animation: slide-to-right var(--transition-duration) ease-in-out;
+}
+:root:has(.transitioning-out[data-transition-out="slide-to-left"])::view-transition-old(slide) {
+	animation: slide-to-left var(--transition-duration) ease-in-out;
+}
+
+:root:has(.transitioning-out .text[data-transition-out="slide-to-right"])::view-transition-old(slide-text),
+:root:has(.transitioning-out .text[data-transition-out="slide-to-right"])::view-transition-old(slide-text-out) {
+	animation: slide-to-right var(--transition-duration) ease-in-out;
+}
+:root:has(.transitioning-out .text[data-transition-out="slide-to-left"])::view-transition-old(slide-text),
+:root:has(.transitioning-out .text[data-transition-out="slide-to-left"])::view-transition-old(slide-text-out) {
+	animation: slide-to-left var(--transition-duration) ease-in-out;
+}
+
+:root:has(.transitioning-out .media[data-transition-out="slide-to-right"])::view-transition-old(slide-media),
+:root:has(.transitioning-out .media[data-transition-out="slide-to-right"])::view-transition-old(slide-media-out) {
+	animation: slide-to-right var(--transition-duration) ease-in-out;
+}
+:root:has(.transitioning-out .media[data-transition-out="slide-to-left"])::view-transition-old(slide-media),
+:root:has(.transitioning-out .media[data-transition-out="slide-to-left"])::view-transition-old(slide-media-out) {
+	animation: slide-to-left var(--transition-duration) ease-in-out;
+}
+
+:root:has(.transitioning-in[data-transition-in="slide-from-right"])::view-transition-new(slide) {
+	animation: slide-from-right var(--transition-duration) ease-in-out;
+}
+:root:has(.transitioning-in[data-transition-in="slide-from-left"])::view-transition-new(slide) {
+	animation: slide-from-left var(--transition-duration) ease-in-out;
+}
+
+:root:has(.transitioning-in .text[data-transition-in="slide-from-right"])::view-transition-new(slide-text),
+:root:has(.transitioning-in .text[data-transition-in="slide-from-right"])::view-transition-new(slide-text-in) {
+	animation: slide-from-right var(--transition-duration) ease-in-out;
+}
+:root:has(.transitioning-in .text[data-transition-in="slide-from-left"])::view-transition-new(slide-text),
+:root:has(.transitioning-in .text[data-transition-in="slide-from-left"])::view-transition-new(slide-text-in) {
+	animation: slide-from-left var(--transition-duration) ease-in-out;
+}
+
+:root:has(.transitioning-in .media[data-transition-in="slide-from-right"])::view-transition-new(slide-media),
+:root:has(.transitioning-in .media[data-transition-in="slide-from-right"])::view-transition-new(slide-media-in) {
+	animation: slide-from-right var(--transition-duration) ease-in-out;
+}
+:root:has(.transitioning-in .media[data-transition-in="slide-from-left"])::view-transition-new(slide-media),
+:root:has(.transitioning-in .media[data-transition-in="slide-from-left"])::view-transition-new(slide-media-in) {
+	animation: slide-from-left var(--transition-duration) ease-in-out;
+}
