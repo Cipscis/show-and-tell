@@ -192,6 +192,49 @@
 		background: rgba(white, 0.1);
 		padding: 0.2em;
 		border-radius: 0.2em;
+
+		&.deco-cass-chomp {
+			position: relative;
+			&::before {
+				content: "";
+				position: absolute;
+				bottom: -3rem;
+				left: -3rem;
+
+				width: 4rem;
+				aspect-ratio: 1 / 1;
+				background-image: url("/show-and-tell/assets/images/cass-chomp.png");
+				background-size: contain;
+			}
+		}
+		&.deco-cass-zonked {
+			position: relative;
+			&::before {
+				content: "";
+				position: absolute;
+				bottom: -1.3rem;
+				right: 0.4rem;
+
+				width: 4rem;
+				aspect-ratio: 1 / 1;
+				background-image: url("/show-and-tell/assets/images/cass-zonked.png");
+				background-size: contain;
+			}
+		}
+		&.deco-milo-relaxed {
+			position: relative;
+			&::after {
+				content: "";
+				position: absolute;
+				top: -2.8rem;
+				right: 0.4rem;
+
+				width: 4rem;
+				aspect-ratio: 1 / 1;
+				background-image: url("/show-and-tell/assets/images/milo-relaxed.png");
+				background-size: contain;
+			}
+		}
 	}
 
 	&:where(.transitioning-in, .transitioning-out) {
