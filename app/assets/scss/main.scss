@@ -13,4 +13,5 @@
 
 @layer components {
 	@include meta.load-css("components/presentation");
+	@include meta.load-css("components/presentation-list");
 }

@@ -23,6 +23,13 @@ $weight-bold: 700;
 	line-height: 1.2;
 }
 
+@mixin heading-small {
+	font-family: $family-heading;
+	font-weight: $weight-normal;
+	font-size: 2rem;
+	line-height: 1.2;
+}
+
 @mixin base {
 	font-family: $family-base;
 	font-weight: $weight-normal;

@@ -1,3 +1,5 @@
+@use "../theme/radius";
+@use "../theme/spacing";
 @use "../theme/typography";
 
 .presentation {
@@ -13,8 +15,8 @@
 		@include typography.base-small;
 
 		position: absolute;
-		bottom: 1rem;
-		right: 1rem;
+		bottom: spacing.$md;
+		right: spacing.$md;
 	}
 
 	> progress {
@@ -24,7 +26,7 @@
 		bottom: 0;
 		left: 0;
 		width: 100%;
-		height: 0.5em;
+		height: spacing.$sm-rel;
 
 		view-transition-name: progress;
 
@@ -67,11 +69,11 @@
 	height: 100dvh;
 
 	display: grid;
-	gap: 2rem;
+	gap: spacing.$lg;
 	position: relative;
 	overflow: hidden;
 
-	padding: 4rem;
+	padding: spacing.$xl;
 
 	&.slide--title {
 		grid-template-areas: "title";
@@ -133,18 +135,18 @@
 		align-content: center;
 
 		p + p {
-			margin-top: 1em;
+			margin-top: spacing.$md-rel;
 		}
 
 		:where(ul, ol) {
 			li + li {
-				margin-top: 0.5em;
+				margin-top: spacing.$sm-rel;
 			}
 		}
 
 		dl > div {
 			+ div {
-				margin-top: 1em;
+				margin-top: spacing.$md-rel;
 			}
 		}
 
@@ -164,7 +166,7 @@
 		min-height: 0;
 
 		img {
-			border-radius: 0.5rem;
+			border-radius: radius.$md;
 		}
 
 	}
@@ -190,8 +192,8 @@
 		}
 
 		background: rgba(white, 0.1);
-		padding: 0.2em;
-		border-radius: 0.2em;
+		padding: spacing.$xs-rel;
+		border-radius: radius.$sm-rel;
 
 		&.deco-cass-chomp {
 			position: relative;
