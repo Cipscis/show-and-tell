@@ -2,19 +2,23 @@
 <html lang="en">
 <head>
 	<title>View transitions</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<meta name="description" content="A presentation on the View Transitions API." />
+	<meta name="description" content="A presentation on the View Transitions API.">
+	<meta name="view-transition" content="same-origin">
 
-	<link rel="stylesheet" href="/assets/css/main.css" />
-	<script type="module" src="/assets/js/dist/main.js"></script>
+	<link rel="stylesheet" href="/assets/css/main.css">
+	<script type="module" blocking="render" src="/assets/js/dist/main.js"></script>
 </head>
 <body>
 	<article class="presentation js-presentation">
 		<section class="slide slide--title js-slide"
 			data-transition-out-speed="snap"
 		>
-			<h2 class="title">View transitions</h2>
+			<h2
+				class="title"
+				style="view-transition-name: presentation-title-view-transitions;"
+			>View transitions</h2>
 		</section>
 		<section class="slide slide--media-right js-slide"
 			data-transition-out-speed="snap"

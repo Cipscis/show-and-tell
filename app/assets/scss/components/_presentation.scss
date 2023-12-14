@@ -191,7 +191,10 @@
 			@include typography.mono-small;
 		}
 
-		background: rgba(white, 0.1);
+		background: rgba(black, 0.1);
+		@media (prefers-color-scheme: dark) {
+			background-color: rgba(white, 0.1);
+		}
 		padding: spacing.$xs-rel;
 		border-radius: radius.$sm-rel;
 
