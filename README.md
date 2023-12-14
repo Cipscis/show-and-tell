@@ -33,14 +33,6 @@ Usually, you will just want to run `npm start`, but this project also provides t
 
 The `.env` file contains the following environment variables:
 
-* `PROJECT_NAME` `(string)`
-
-If present, used by [Express](https://expressjs.com/) to set up redirects for emulating [GitHub Pages](#github-pages).
-
-* `MODE` `(string 'development' | 'production')`
-
-Used by Webpack to determine what optimisations to use and how to generate sourcemaps.
-
 * `PORT` `(int)`
 
 Used by [Express](https://expressjs.com/) to determine which port to use when running a local Node.js server.
@@ -48,8 +40,6 @@ Used by [Express](https://expressjs.com/) to determine which port to use when ru
 An example `.env` file you can use for development is:
 
 ```
-PROJECT_NAME = "show-and-tell"
-MODE = "development"
 PORT = "8080"
 ```
 
