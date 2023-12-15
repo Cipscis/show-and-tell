@@ -123,22 +123,6 @@
 			<h2 class="title">View transitions</h2>
 
 			<div class="text">
-				<p>View transitions can be controlled with CSS animations</p>
-			</div>
-			<code class="media deco-cass-chomp" data-language="css">::view-transition-old(slide) {
-	animation: slide-to-left 0.3s ease-in-out;
-}
-
-::view-transition-new(slide) {
-	animation: slide-from-right 0.3s ease-in-out;
-}</code>
-		</section>
-		<section class="slide slide--media js-slide"
-			data-transition-in="slide-from-right"
-		>
-			<h2 class="title">View transitions</h2>
-
-			<div class="text">
 				<p>View transitions are triggered with JavaScript</p>
 			</div>
 			<code class="media deco-milo-relaxed" data-language="javascript">function updateDOM() {
@@ -149,6 +133,23 @@ if (document.startViewTransition) {
 	document.startViewTransition(updateDOM);
 } else {
 	updateDom();
+}</code>
+		</section>
+		<section class="slide slide--media js-slide"
+			data-transition-in="slide-from-right"
+			data-transition-out="slide-to-left"
+		>
+			<h2 class="title">View transitions</h2>
+
+			<div class="text">
+				<p>View transitions can be controlled with CSS animations</p>
+			</div>
+			<code class="media deco-cass-chomp" data-language="css">::view-transition-old(slide) {
+	animation: slide-to-left 0.3s ease-in-out;
+}
+
+::view-transition-new(slide) {
+	animation: slide-from-right 0.3s ease-in-out;
 }</code>
 		</section>
 		<section class="slide slide--media-right js-slide"
@@ -185,45 +186,57 @@ if (document.startViewTransition) {
 				<li style="view-transition-name: example-item-3;">Item 3</li>
 			</ul>
 		</section>
-		<section class="slide slide--media-double js-slide"
+		<section class="slide slide--media js-slide"
 			data-transition-out-speed="slow"
 		>
 			<h2 class="title">View transitions</h2>
 
-			<code class="media code--small deco-cass-zonked" data-language="html"><span style="display: inline-block; view-transition-name: example-item-code-1;">&lt;li style="view-transition-name: example-item-1;">Item 1&lt;/li></span>
+			<div class="text">
+				<p>Individual elements will be transitioned if they have a <code class="code--inline">view-transition-name</code></p>
+			</div>
+
+			<div class="media">
+				<code class="code--small deco-cass-zonked" data-language="html"><span style="display: inline-block; view-transition-name: example-item-code-1;">&lt;li style="view-transition-name: example-item-1;">Item 1&lt;/li></span>
 <span style="display: inline-block; view-transition-name: example-item-code-2;">&lt;li style="view-transition-name: example-item-2;">Item 2&lt;/li></span>
 <span style="display: inline-block; view-transition-name: example-item-code-3;">&lt;li style="view-transition-name: example-item-3;">Item 3&lt;/li></span>
 <span style="display: inline-block; view-transition-name: example-item-code-4;">&lt;li style="view-transition-name: example-item-4;">Item 4&lt;/li></span>
 <span style="display: inline-block; view-transition-name: example-item-code-5;">&lt;li style="view-transition-name: example-item-5;">Item 5&lt;/li></span>
 <span style="display: inline-block; view-transition-name: example-item-code-6;">&lt;li style="view-transition-name: example-item-6;">Item 6&lt;/li></span></code>
 
-			<ul class="media" style="display: grid; grid-template-columns: repeat(2, 50%);">
-				<li style="view-transition-name: example-item-1;">Item 1</li>
-				<li style="view-transition-name: example-item-2;">Item 2</li>
-				<li style="view-transition-name: example-item-3;">Item 3</li>
-				<li style="view-transition-name: example-item-4;">Item 4</li>
-				<li style="view-transition-name: example-item-5;">Item 5</li>
-				<li style="view-transition-name: example-item-6;">Item 6</li>
-			</ul>
+				<ul style="display: grid; grid-template-columns: repeat(2, 50%);">
+					<li style="view-transition-name: example-item-1;">Item 1</li>
+					<li style="view-transition-name: example-item-2;">Item 2</li>
+					<li style="view-transition-name: example-item-3;">Item 3</li>
+					<li style="view-transition-name: example-item-4;">Item 4</li>
+					<li style="view-transition-name: example-item-5;">Item 5</li>
+					<li style="view-transition-name: example-item-6;">Item 6</li>
+				</ul>
+			</div>
 		</section>
-		<section class="slide slide--media-double js-slide">
+		<section class="slide slide--media js-slide">
 			<h2 class="title">View transitions</h2>
 
-			<code class="media code--small deco-cass-zonked" data-language="html"><span style="display: inline-block; view-transition-name: example-item-code-6;">&lt;li style="view-transition-name: example-item-6;">Item 6&lt;/li></span>
+			<div class="text">
+				<p>Individual elements will be transitioned if they have a <code class="code--inline">view-transition-name</code></p>
+			</div>
+
+			<div class="media">
+				<code class="code--small deco-cass-zonked" data-language="html"><span style="display: inline-block; view-transition-name: example-item-code-6;">&lt;li style="view-transition-name: example-item-6;">Item 6&lt;/li></span>
 <span style="display: inline-block; view-transition-name: example-item-code-4;">&lt;li style="view-transition-name: example-item-4;">Item 4&lt;/li></span>
 <span style="display: inline-block; view-transition-name: example-item-code-5;">&lt;li style="view-transition-name: example-item-5;">Item 5&lt;/li></span>
 <span style="display: inline-block; view-transition-name: example-item-code-2;">&lt;li style="view-transition-name: example-item-2;">Item 2&lt;/li></span>
 <span style="display: inline-block; view-transition-name: example-item-code-1;">&lt;li style="view-transition-name: example-item-1;">Item 1&lt;/li></span>
 <span style="display: inline-block; view-transition-name: example-item-code-3;">&lt;li style="view-transition-name: example-item-3;">Item 3&lt;/li></span>
 </code>
-			<ul class="media" style="display: grid; grid-template-columns: repeat(2, 50%);">
-				<li style="view-transition-name: example-item-6;">Item 6</li>
-				<li style="view-transition-name: example-item-4;">Item 4</li>
-				<li style="view-transition-name: example-item-5;">Item 5</li>
-				<li style="view-transition-name: example-item-2;">Item 2</li>
-				<li style="view-transition-name: example-item-1;">Item 1</li>
-				<li style="view-transition-name: example-item-3;">Item 3</li>
-			</ul>
+				<ul class="media" style="display: grid; grid-template-columns: repeat(2, 50%);">
+					<li style="view-transition-name: example-item-6;">Item 6</li>
+					<li style="view-transition-name: example-item-4;">Item 4</li>
+					<li style="view-transition-name: example-item-5;">Item 5</li>
+					<li style="view-transition-name: example-item-2;">Item 2</li>
+					<li style="view-transition-name: example-item-1;">Item 1</li>
+					<li style="view-transition-name: example-item-3;">Item 3</li>
+				</ul>
+			</div>
 		</section>
 
 		<section class="slide slide--media-right js-slide">
@@ -271,7 +284,7 @@ if (document.startViewTransition) {
 					<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API" target="_blank">View Transitions API (MDN)</a></li>
 					<li><a href="https://developer.chrome.com/docs/web-platform/view-transitions/" target="_blank">Smooth and simple transitions with the View Transitions API</a></li>
 					<li><a href="https://daverupert.com/2023/05/getting-started-view-transitions/" target="_blank">Getting started with View Transitions on multi-page apps</a></li>
-					<li>These slides: <a href="https://cipscis.github.io/view-transitions" target="_blank">https://cipscis.github.io/view-transitions</a></li>
+					<li>These slides: <a href="https://showoff.curly.kiwi/view-transitions" target="_blank">showoff.curly.kiwi/view-transitions</a></li>
 				</ul>
 			</div>
 			<figure class="media">

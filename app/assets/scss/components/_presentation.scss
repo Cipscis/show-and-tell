@@ -134,6 +134,8 @@
 		grid-template-columns: 1fr;
 		align-content: center;
 
+		text-wrap: pretty;
+
 		p + p {
 			margin-top: spacing.$md-rel;
 		}
@@ -240,6 +242,10 @@
 				background-size: contain;
 			}
 		}
+	}
+	code.code--inline {
+		display: inline-block;
+		width: min-content;
 	}
 
 	&:where(.transitioning-in, .transitioning-out) {
