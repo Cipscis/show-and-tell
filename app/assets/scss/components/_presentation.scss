@@ -122,6 +122,16 @@
 			grid-area: media-2;
 		}
 	}
+	&.slide--media-split {
+		grid-template-areas:
+			"title title"
+			"media media-2";
+		grid-template-rows: auto 1fr;
+
+		.media + .media {
+			grid-area: media-2;
+		}
+	}
 
 	.title {
 		grid-area: title;
@@ -174,10 +184,15 @@
 	}
 	figure.media {
 		display: grid;
-		place-items: center;
+		place-content: center;
 		img {
 			min-height: 0;
 			max-height: 100%;
+		}
+		figcaption {
+			margin-top: spacing.$md;
+			text-align: center;
+			text-wrap: balance;
 		}
 	}
 
