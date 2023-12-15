@@ -141,10 +141,14 @@
 			<div class="text">
 				<p>View transitions are triggered with JavaScript</p>
 			</div>
-			<code class="media deco-milo-relaxed">if (document.startViewTransition) {
-	document.startViewTransition(() => {
-		// Modify the DOM in some way
-	});
+			<code class="media deco-milo-relaxed">function updateDOM() {
+	// Modify the DOM in some way
+}
+
+if (document.startViewTransition) {
+	document.startViewTransition(updateDOM);
+} else {
+	updateDom();
 }</code>
 		</section>
 		<section class="slide slide--media-right js-slide"
