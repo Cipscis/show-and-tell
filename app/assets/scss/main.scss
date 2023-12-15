@@ -11,6 +11,15 @@
 	@include meta.load-css("theme/base/transitions");
 }
 
+@layer plugins {
+	@media (prefers-color-scheme: dark) {
+		@include meta.load-css("../../../node_modules/highlight.js/styles/a11y-dark.min.css");
+	}
+	@media (prefers-color-scheme: light) {
+		@include meta.load-css("../../../node_modules/highlight.js/styles/a11y-light.min.css");
+	}
+}
+
 @layer components {
 	@include meta.load-css("components/presentation");
 	@include meta.load-css("components/presentation-list");

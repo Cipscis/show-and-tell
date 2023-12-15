@@ -32,6 +32,9 @@
 		"url": "https://github.com/cipscis/show-and-tell.git"
 	},
 	"license": "Hippocratic-2.1",
+	"dependencies": {
+		"highlight.js": "^11.9.0"
+	},
 	"devDependencies": {
 		"@jest/globals": "^29.7.0",
 		"@stylistic/eslint-plugin": "^1.0.0",

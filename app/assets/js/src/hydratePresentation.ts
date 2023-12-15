@@ -1,5 +1,48 @@
+import hljs from 'highlight.js';
+import xml from 'highlight.js/lib/languages/xml';
+import css from 'highlight.js/lib/languages/css';
+import javascript from 'highlight.js/lib/languages/javascript';
+
 import { clamp } from 'util/clamp';
 import { debounce } from 'util/debounce';
+
+// highlight.js treats HTML and XML as aliases
+hljs.registerLanguage('html', xml);
+hljs.registerLanguage('css', css);
+hljs.registerLanguage('javascript', javascript);
+
+/**
+ * Automatically give slides an ID, to use with fragment links.
+ */
+function addSlideIndex(slide: HTMLElement, i: number): void {
+	const slideNumber = i + 1;
+	slide.id = `slide-${slideNumber}`;
+}
+
+/**
+ * Apply syntax highlighting to any `<code>` elements with a `data-language` attribute.
+ */
+function applySyntaxHighlighting(slide: HTMLElement): void {
+	const codeEls = slide.querySelectorAll<HTMLElement>('code[data-language]');
+	for (const codeEl of codeEls) {
+		const language = codeEl.dataset.language;
+		if (typeof language === 'undefined') {
+			continue;
+		}
+
+		// If parts of code need to move around with view transitions, highlight them independently
+		const parts = codeEl.querySelectorAll<HTMLElement>('[style*="view-transition-name"]');
+		if (parts.length === 0) {
+			const highlightResult = hljs.highlight(codeEl.textContent ?? '', { language });
+			codeEl.innerHTML = highlightResult.value;
+		} else {
+			for (const part of parts) {
+				const highlightResult = hljs.highlight(part.textContent ?? '', { language });
+				part.innerHTML = highlightResult.value;
+			}
+		}
+	}
+}
 
 /**
  * Adds JavaScript interaction to a presentation element, if found.
@@ -12,12 +55,13 @@ export function hydratePresentation(): void {
 
 	const slides = Array.from(presentation.querySelectorAll<HTMLElement>('.js-slide'));
 	slides.forEach((slide, i) => {
-		const slideNumber = i + 1;
-		slide.id = `slide-${slideNumber}`;
+		addSlideIndex(slide, i);
+		applySyntaxHighlighting(slide);
 	});
 
 	const progress = document.createElement('progress');
 
+	// Set up initial slide and slide count
 	if (slides.length > 0) {
 		const targetSelector = new URL(document.location.href).hash;
 		const initialSlideIndex = (() => {
