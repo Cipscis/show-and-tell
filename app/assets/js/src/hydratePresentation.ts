@@ -129,8 +129,13 @@ export function hydratePresentation(): void {
 			document.documentElement.dataset.nextSlide = String(newSlideIndex);
 
 			slides[currentSlideIndex].ariaCurrent = null;
-			slides[newSlideIndex].ariaCurrent = String(true);
-			slides[newSlideIndex].classList.add('transitioning-in');
+
+			const newSlide = slides[newSlideIndex];
+			newSlide.ariaCurrent = String(true);
+			newSlide.classList.add('transitioning-in');
+			newSlide.querySelectorAll('video').forEach((video) => {
+				video.currentTime = 0;
+			});
 
 			progress.value = newSlideIndex / (slides.length - 1);
 			presentation.dataset.slideNumber = String(newSlideIndex + 1);

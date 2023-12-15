@@ -185,7 +185,8 @@
 	figure.media {
 		display: grid;
 		place-content: center;
-		img {
+		img,
+		video {
 			min-height: 0;
 			max-height: 100%;
 		}
