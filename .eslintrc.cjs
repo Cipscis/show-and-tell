@@ -17,6 +17,7 @@ module.exports = {
 		project: [
 			'./tsconfig.json',
 			'./scripts/tsconfig.json',
+			'./test/tsconfig.json',
 		],
 	},
 	extends: [
@@ -26,6 +27,7 @@ module.exports = {
 	],
 	ignorePatterns: [
 		'*.md',
+		'tsconfig.json',
 		'.eslintrc.cjs',
 		'stylelint.config.cjs',
 		'jest.config.js',
@@ -327,6 +329,9 @@ module.exports = {
 				exceptions: [
 					'/',
 				],
+				markers: [
+					'/',
+				],
 				block: {
 					balanced: true,
 				},
@@ -369,12 +374,18 @@ module.exports = {
 			},
 		],
 	},
+
 	overrides: [
 		{
-			files: ['./scripts/**/*'],
+			files: ['*.{spec,test}.{j,t}{s,sx}'],
+			plugins: ['jest'],
+			extends: ['plugin:jest/recommended'],
+		},
+		{
+			files: ['scripts/**/*'],
 			rules: {
 				'no-console': 'off',
 			},
-		}
+		},
 	],
 };

@@ -26,20 +26,29 @@ Usually, you will just want to run `npm start`, but this project also provides t
 * `npm start` runs both the `server` and `watch` tasks simultaneously.
 
 * `npm test` runs any configured test suites using [Jest](https://jestjs.io/).
-* `npm run testCoverage` runs any configured test suites using [Jest](https://jestjs.io/), and reports coverage information.
-* `npm run testWatch` runs any configured test suites using [Jest](https://jestjs.io/) in watch mode.
+* `npm run test:coverage` runs any configured test suites using [Jest](https://jestjs.io/), and reports coverage information.
+* `npm run watch:test` runs any configured test suites using [Jest](https://jestjs.io/) in watch mode.
 
 ### .env
 
 The `.env` file contains the following environment variables:
 
-* `PORT` `(int)`
+* `PROJECT_NAME?: string`
+
+If present, used by [Express](https://expressjs.com/) to set up redirects for emulating [GitHub Pages](#github-pages).
+
+* `MODE: 'development' | 'production'`
+
+Used to determine what optimisations to use when running the build process.
+
+* `PORT: number`
 
 Used by [Express](https://expressjs.com/) to determine which port to use when running a local Node.js server.
 
 An example `.env` file you can use for development is:
 
 ```
+MODE = "development"
 PORT = "8080"
 ```
 
@@ -103,8 +112,10 @@ These dependencies are used when working on the project locally.
 
 These dependencies are used for deploying the project to GitHub Pages.
 
-* [checkout](https://github.com/marketplace/actions/checkout): Used to check out the repository to a workspace so it can be built
+* [checkout](https://github.com/marketplace/actions/checkout): Used to check out the repository to a workspace so it can be built.
 
 * [setup-node](https://github.com/marketplace/actions/setup-node-js-environment): Use to set up a Node.JS environment for the build and test scripts to run on during the deployment process.
 
-* [Deploy to GitHub Pages](https://github.com/marketplace/actions/deploy-to-github-pages): Used to deploy the project to GitHub pages once it has been built
+* [upload-pages-artifact](https://github.com/marketplace/actions/upload-github-pages-artifact): Used to upload an artifact to use for deploying to GitHub Pages.
+
+* [deploy-pages](https://github.com/marketplace/actions/deploy-github-pages-site): Used to deploy the artifact to GitHub Pages.
